@@ -1,0 +1,5 @@
+bin/*
+*.jar
+spellright.dict
+*.json
+*.pdf
