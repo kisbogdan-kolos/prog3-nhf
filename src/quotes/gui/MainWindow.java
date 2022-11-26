@@ -27,12 +27,18 @@ public class MainWindow extends JFrame {
     private QuoteList ql;
     private ConfigureLocalDatabase dbc;
 
+    /**
+     * Creates a {@code MainWindow} object
+     */
     public MainWindow() {
         super("Jóságtár");
 
         initComponents();
     }
 
+    /**
+     * Initializes the components
+     */
     private void initComponents() {
         initMenuBar();
 
@@ -70,6 +76,9 @@ public class MainWindow extends JFrame {
         db.init();
     }
 
+    /**
+     * Initializes the menu bar
+     */
     private void initMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
@@ -105,6 +114,9 @@ public class MainWindow extends JFrame {
         setJMenuBar(menuBar);
     }
 
+    /**
+     * Shows a random quote
+     */
     private void newRandomQuote() {
         int len = db.getQuoteCount();
         if (len > 0) {

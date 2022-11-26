@@ -9,6 +9,9 @@ import javax.swing.table.AbstractTableModel;
 import quotes.database.Database;
 import quotes.database.Person;
 
+/**
+ * The model for the {@code Person} table
+ */
 public class PersonData extends AbstractTableModel {
     private Database db;
 
@@ -28,6 +31,11 @@ public class PersonData extends AbstractTableModel {
             JButton.class
     };
 
+    /**
+     * Creates a {@code PersonData} object
+     * 
+     * @param db the database
+     */
     public PersonData(Database db) {
         this.db = db;
 
@@ -103,18 +111,38 @@ public class PersonData extends AbstractTableModel {
         return column == 4;
     }
 
+    /**
+     * Add a {@code Person} to the database
+     * 
+     * @param p the {@code Person} to add
+     */
     public void addPerson(Person p) {
         db.addPerson(p);
     }
 
+    /**
+     * Remove a {@code Person} from the database
+     * 
+     * @param p the {@code Person} to remove
+     */
     public void deletePerson(Person p) {
         db.deletePersonById(p.getId());
     }
 
     public interface EditEvent {
+        /**
+         * Called when a {@code Person} is edited
+         * 
+         * @param p the edited {@code Person}
+         */
         public void onEdit(Person p);
     }
 
+    /**
+     * Add an {@code EditEvent} to the list
+     * 
+     * @param e the {@code EditEvent} to add
+     */
     public void addEditEvent(EditEvent e) {
         editEvents.add(e);
     }

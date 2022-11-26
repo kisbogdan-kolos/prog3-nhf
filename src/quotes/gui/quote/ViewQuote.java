@@ -14,6 +14,9 @@ import quotes.database.Quote;
 public class ViewQuote extends JFrame {
     private JTextArea textArea;
 
+    /**
+     * Creates a {@code ViewQuote} object
+     */
     public ViewQuote() {
         super("Idézet nézet");
         setSize(new Dimension(400, 200));
@@ -39,15 +42,26 @@ public class ViewQuote extends JFrame {
         add(p, BorderLayout.SOUTH);
     }
 
+    /**
+     * @return the text area with the quote
+     */
     public JTextArea getTextArea() {
         return textArea;
     }
 
+    /**
+     * Shows the component
+     */
     public void showComponent(Quote q) {
         setQuote(q);
         setVisible(true);
     }
 
+    /**
+     * Sets the quote to display
+     * 
+     * @param q the quote to display
+     */
     public void setQuote(Quote q) {
         String quoteText = "";
         if (!q.getContextBefore().isEmpty()) {

@@ -23,6 +23,11 @@ public class QuoteList extends JFrame {
     private ViewQuote vq;
     private QuoteFilter qf;
 
+    /**
+     * Creates a {@code QuoteList} object
+     * 
+     * @param qd the {@code QuoteData} object to use
+     */
     public QuoteList(QuoteData qd) {
         super("Idézetek listája");
         this.qd = qd;
@@ -41,12 +46,20 @@ public class QuoteList extends JFrame {
         initComponents();
     }
 
+    /**
+     * Shows the component
+     */
     public void showComponent() {
         qf.updateList();
 
         setVisible(true);
     }
 
+    /**
+     * Shows the component
+     * 
+     * @param autoAdd if the {@code AddQuote} component should be shown
+     */
     public void showComponent(boolean autoAdd) {
         showComponent();
 
@@ -54,6 +67,9 @@ public class QuoteList extends JFrame {
             aq.showComponent();
     }
 
+    /**
+     * Initializes the components
+     */
     private void initComponents() {
         setMinimumSize(new Dimension(600, 300));
 

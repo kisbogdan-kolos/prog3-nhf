@@ -13,6 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+/**
+ * {@code Database} implementation using JSON files
+ */
 public class LocalDatabase implements Database {
     private List<Person> people;
     private List<Quote> quotes;
@@ -29,6 +32,11 @@ public class LocalDatabase implements Database {
 
     private LocalDatabaseConfigurator cfg;
 
+    /**
+     * Creates a new {@code LocalDatabase} instance
+     * 
+     * @param cfg {@code LocalDatabaseConfigurator} to use
+     */
     public LocalDatabase(LocalDatabaseConfigurator cfg) {
         people = new ArrayList<Person>();
 
@@ -56,10 +64,19 @@ public class LocalDatabase implements Database {
         cfg.setDatabase(this);
     }
 
+    /**
+     * @return filename of the currently active database file
+     */
     public String getFilename() {
         return filename;
     }
 
+    /**
+     * Sets the filename of the new database file. If the file does not exist, the
+     * database will run the configuration again.
+     * 
+     * @param filename
+     */
     public void setFilename(String filename) {
         this.filename = filename;
         try {
@@ -325,15 +342,39 @@ public class LocalDatabase implements Database {
         allQuotes.add(e);
     }
 
+    /**
+     * Interface for configuring the database.
+     */
     public interface LocalDatabaseConfigurator {
+        /**
+         * Sets the database for the configuration
+         * 
+         * @param db
+         */
         public void setDatabase(LocalDatabase db);
 
+        /**
+         * Called when the database is configured.
+         */
         public void configure();
 
+        /**
+         * Called when the database is unable to save the file.
+         */
         public void fileAccessError();
 
+        /**
+         * Called when the database is unable to parse the file.
+         * 
+         * @param reason
+         */
         public void fileFormatError(String msg);
 
+        /**
+         * Called when the database is unable to save the file.
+         * 
+         * @param error
+         */
         public void fileSaveError(String msg);
     }
 }
