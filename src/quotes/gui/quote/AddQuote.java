@@ -38,6 +38,11 @@ public class AddQuote extends JFrame {
     public void showComponent() {
         personModel.removeAllElements();
         personModel.addAll(qd.getAllPeople());
+        try {
+            personSelector.setSelectedIndex(0);
+        } catch (IllegalArgumentException e) {
+
+        }
 
         setVisible(true);
     }
@@ -51,7 +56,6 @@ public class AddQuote extends JFrame {
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         personModel = new DefaultComboBoxModel<Person>();
-        personModel.addAll(qd.getAllPeople());
         personSelector = new JComboBox<Person>(personModel);
         personSelector.setRenderer(new PersonSelectorRenderer());
         JPanel selectorPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
