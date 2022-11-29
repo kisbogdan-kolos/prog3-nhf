@@ -196,6 +196,10 @@ public class LocalDatabase implements Database {
         setFilename("db.json");
     }
 
+    public void init(String filename) {
+        setFilename(filename);
+    }
+
     @Override
     public int getPersonCount() {
         return people.size();
