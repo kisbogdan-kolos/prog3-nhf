@@ -1,5 +1,5 @@
 bin/*
 *.jar
 spellright.dict
-*.json
+db*.json
 *.pdf
