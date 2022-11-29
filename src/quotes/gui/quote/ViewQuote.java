@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 import quotes.database.Quote;
 
@@ -31,6 +32,7 @@ public class ViewQuote extends JFrame {
         textArea.setFont(UIManager.getFont("Label.font"));
         textArea.setBorder(UIManager.getBorder("Label.border"));
         textArea.setFont(textArea.getFont().deriveFont(20.0f));
+        textArea.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         add(textArea, BorderLayout.CENTER);
 
