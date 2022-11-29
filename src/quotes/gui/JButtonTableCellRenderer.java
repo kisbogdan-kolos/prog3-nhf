@@ -7,7 +7,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 /**
- * A {@code JButton} object in a {@code JTable}
+ * Render a {@code JButton} object in a {@code JTable}
  */
 public class JButtonTableCellRenderer implements TableCellRenderer {
     @Override
