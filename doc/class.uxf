@@ -1,0 +1,335 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>297</x><y>0</y><w>234</w><h>342</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+quotes.database::Database
+--
++init(): void
++configure(): void
++getPersonCount(): int
++getPersonByIndex(int idx): Person
++getPersonById(UUID id): Person
++addPerson(Person p): void
++deletePersonByIndex(int idx): void
++deletePersonById(UUID id): void
++onPersonUpdate(UpdateEvent e): void
++onPersonInsert(UpdateEvent e): void
++onPersonDelete(UpdateEvent e): void
++onAllPersonUpdate(UpdateEvent e): void
++getQuoteCount(): int
++getQuoteByIndex(int idx): Quote
++getQuoteById(UUID id): Quote
++addQuote(Quote q): void
++deleteQuoteByIndex(int idx): void
++deleteQuoteById(UUID id): void
++onQuoteUpdate(UpdateEvent e): void
++onQuoteInsert(UpdateEvent e): void
++onQuoteDelete(UpdateEvent e): void
++onAllQuoteUpdate(UpdateEvent e): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>585</x><y>0</y><w>234</w><h>63</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+quotes.database.Database::UpdateEvent
+--
++onEvent(int idx): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>522</x><y>27</y><w>81</w><h>27</h></coordinates><panel_attributes>lt=(+)-</panel_attributes><additional_attributes>10;10;70;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1035</x><y>0</y><w>270</w><h>558</h></coordinates><panel_attributes>quotes.database::LocalDatabase
+--
+-people: List&lt;Person&gt;
+-quotes: List&lt;Quote&gt;
+-filename: String
+-singlePersonUpdate: List&lt;UpdateEvent&gt;
+-singlePersonInsert: List&lt;UpdateEvent&gt;
+-singlePersonDelete: List&lt;UpdateEvent&gt;
+-allPeople: List&lt;UpdateEvent&gt;
+-singleQuoteUpdate: List&lt;UpdateEvent&gt;
+-singleQuoteInsert: List&lt;UpdateEvent&gt;
+-singleQuoteDelete: List&lt;UpdateEvent&gt;
+-allQuotes: List&lt;UpdateEvent&gt;
+-cfg: LocalDatabaseConfigurator
+--
++LocalDatabase(LocalDatabaseConfigurator cfg)
++getFilename(): String
++setFilename(): String
+-readFile(): void
+-saveFile(): void
++init(): void
++configure(): void
++getPersonCount(): int
++getPersonByIndex(int idx): Person
++getPersonById(UUID id): Person
++addPerson(Person p): void
++deletePersonByIndex(int idx): void
++deletePersonById(UUID id): void
++onPersonUpdate(UpdateEvent e): void
++onPersonInsert(UpdateEvent e): void
++onPersonDelete(UpdateEvent e): void
++onAllPersonUpdate(UpdateEvent e): void
++getQuoteCount(): int
++getQuoteByIndex(int idx): Quote
++getQuoteById(UUID id): Quote
++addQuote(Quote q): void
++deleteQuoteByIndex(int idx): void
++deleteQuoteById(UUID id): void
++onQuoteUpdate(UpdateEvent e): void
++onQuoteInsert(UpdateEvent e): void
++onQuoteDelete(UpdateEvent e): void
++onAllQuoteUpdate(UpdateEvent e): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>621</x><y>153</y><w>324</w><h>108</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+quotes.database.LocalDatabase::LocalDatabaseConfigurator
+--
++setDatabase(LocalDatabase db): void
++configure(): void
++fileAccessError(): void
++vileFormatError(String msg): void
++fileSaveError(String msg): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>522</x><y>90</y><w>531</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;570;10</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>180</y><w>117</w><h>27</h></coordinates><panel_attributes>lt=(+)-</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>441</y><w>369</w><h>288</h></coordinates><panel_attributes>quotes.database::Person
+--
+-id: UUID
+-fullName: String
+-shortName: String
+-notes: String
+-quoteCount: int
+-dataChanged: List&lt;UpdateEvent&gt;
+--
+~Person(UUID id, String fullName, String shortName, String notes)
++Person(String fullName, String shortName, String notes)
++getId(): UUID
++getFullName(): String
++setFullName(String fullName): void
++getShortName(): String
++setShortName(String shortName): void
++getNotes(): String
++setNotes(String notes): void
++setAllParams(String fullName, String shortName, String notes): void
++getQuoteCount(): int
+~setQuoteCount(int quoteCount): void
++setDataChanged(UpdateEvent dataChanged): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>351</y><w>207</w><h>54</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+quotes.database.Person::UpdateEvent
+--
++onEvent(Person p): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>396</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=(+)-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>333</y><w>27</w><h>126</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>459</x><y>441</y><w>468</w><h>288</h></coordinates><panel_attributes>quotes.database::Quote
+--
+-id: UUID
+-author: Person
+-contextBefore: String
+-quote: String
+-contextAfter: String
+-dataChanged: List&lt;UpdateEvent&gt;
+--
+~Quote(UUID id, Person author, String contextBefore, String quote, String contextAfter)
++Quote(Person author, String contextBefore, String quote, String contextAfter)
++getId(): UUID
++getAuthor(): Person
++setAuthor(Person author): void
++getContextBefore(): String
++setContextBefore(String contextBefore): void
++getQuote(): String
++setQuote(String quote): void
++getContextAfter(): String
++setContextAfter(String contextAfter): void
++setAllParams(Person author, String contextBefore, String quote, String contextAfter): void
++setDataChanged(UpdateEvent: dataChanged): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>351</y><w>207</w><h>54</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+quotes.database.Person::UpdateEvent
+--
++onEvent(Quote q): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>810</x><y>396</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=(+)-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>495</x><y>333</y><w>27</w><h>126</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>558</y><w>117</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1062</x><y>711</y><w>243</w><h>180</h></coordinates><panel_attributes>quotes.gui.database::ConfigureLocalDatabase
+--
+-db: LocalDatabase
+-label: JLabel
+-fc: JFileChooser
+-filename: String
+-path: String
+--
++ConfigureLocalDatabase()
+-initComponents(): void
++configure(): void
++setDatabase(LocalDatabase db): void
++configure(): void
++fileAccessError(): void
++vileFormatError(String msg): void
++fileSaveError(String msg): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>756</x><y>1584</y><w>144</w><h>54</h></coordinates><panel_attributes>JFrame
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>891</x><y>819</y><w>189</w><h>810</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;880;100;880;100;10;190;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1215</x><y>648</y><w>90</w><h>27</h></coordinates><panel_attributes>JFileChooser</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1251</x><y>666</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>873</x><y>252</y><w>243</w><h>477</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;50;120;50;120;440;250;440;250;510</additional_attributes></element><element><id>Relation</id><coordinates><x>1179</x><y>549</y><w>27</w><h>180</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1314</y><w>306</w><h>171</h></coordinates><panel_attributes>quotes.gui.person::AddPerson
+--
+-pd: PersonData
+-fullName: JTextField
+-shortName: JTextField
+-notes: JTextField
+--
++AddPerson(PersonData pd)
++showComponent(): void
+-initComponents(): void
+-generateInputPanel(String text, JPanel addTo): JTextField
+-addPerson(): void
+-clearFields(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>1323</y><w>477</w><h>306</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>510;320;70;320;70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>801</x><y>1071</y><w>90</w><h>27</h></coordinates><panel_attributes>JPanel</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1503</y><w>306</w><h>198</h></coordinates><panel_attributes>quotes.gui.person::EditPerson
+--
+-pd: PersonData
+-person: Person
+-fullName: JTextField
+-shortName: JTextField
+-notes: JTextField
+--
++EditPerson(PersonData pd)
++showComponent(Person p): void
+-initComponents(): void
+-generateInputPanel(String text, JPanel addTo): JTextField
+-savePerson(): void
+-deletePerson(): void
+-clearFields(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>1602</y><w>477</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>510;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>126</x><y>1152</y><w>180</w><h>117</h></coordinates><panel_attributes>quotes.gui.person::PersonList
+--
+-pd: PersonData
+-ap: AddPerson
+-ep: EditPerson
+--
++PersonList(PersonData pd)
++showComponent(): void
+-initComponents(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>207</x><y>1260</y><w>27</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>1242</y><w>63</w><h>306</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;10;50;320;10;320</additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>1179</y><w>477</w><h>450</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>510;480;70;480;70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>999</x><y>1341</y><w>306</w><h>198</h></coordinates><panel_attributes>quotes.gui.quote::AddQuote
+--
+-qd: QuoteData
+-personModel: DefaultComboBoxModel&lt;Person&gt;
+-personSelector: JComboBox&lt;Person&gt;
+-contextBefore: JTextField
+-quoteText: JTextField
+-contextAfter: JTextField
+--
++AddQuote(QuoteData qd)
++showComponent(): void
+-initComponents(): void
+-generateInputPanel(String text, JPanel addTo): JTextField)
+-addQuote(): void
+-clearFields(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>891</x><y>1422</y><w>126</w><h>207</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;210;100;210;100;10;120;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>810</x><y>1674</y><w>90</w><h>27</h></coordinates><panel_attributes>JComboBox</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>999</x><y>1557</y><w>306</w><h>234</h></coordinates><panel_attributes>quotes.gui.quote::EditQuote
+--
+-qd: QuoteData
+-quote: Quote
+-personModel: DefaultComboBoxModel&lt;Person&gt;
+-personSelector: JComboBox&lt;Person&gt;
+-contextBefore: JTextField
+-quoteText: JTextField
+-contextAfter: JTextField
+--
++EditQuote(QuoteData qd)
++showComponent(): void
+-initComponents(): void
+-generateInputPanel(String text, JPanel addTo): JTextField)
+-saveQuote(): void
+-deleteQuote(): void
+-clearFields(): void
+-loadFileds(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>891</x><y>1602</y><w>126</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>999</x><y>954</y><w>252</w><h>45</h></coordinates><panel_attributes>quotes.gui.quote::PersonSelectorRenderer
+--
++getListCellRendererComponent(): Component</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>999</x><y>1134</y><w>306</w><h>171</h></coordinates><panel_attributes>quotes.gui.quote::QuoteFilter
+--
+-qd: QuoteData
+-sorter: TableRowSorter&lt;QuoteData&gt;
+-allPerson: Person
+-personModel: DefaultComboBoxModel&lt;Person&gt;
+-personSelector: JComboBox&lt;Person&gt;
+-filterTextSelector: JTextField
+--
++QuoteFilter(QuoteData qd, JTable table)
++updateList(): void
+-initComponents(): void
+-applyFilter(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1035</x><y>1026</y><w>270</w><h>72</h></coordinates><panel_attributes>quotes.gui.quote.QuoteFilter::InputFieldKeyListener
+--
++changedUpdate(documentEvent e): void
++insertUpdate(DocumentEvent e): void
++removeUpdate(DocumentEvent e): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1242</x><y>1089</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=(+)-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>693</x><y>1341</y><w>225</w><h>153</h></coordinates><panel_attributes>quotes.gui.quote::QuoteList
+--
+-qd: QuoteData
+-aq: AddQuote
+-eq: EditQuote
+-vq: ViewQuote
+-qf: QuoteFilter
+--
++QuoteList(QuoteData qd)
++showComponent(): void
++showComponent(boolean autoAdd): void
+-initComponents(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>837</x><y>1089</y><w>180</w><h>99</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90;180;90</additional_attributes></element><element><id>Relation</id><coordinates><x>909</x><y>1368</y><w>108</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>909</x><y>1395</y><w>108</w><h>207</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;10;60;210;100;210</additional_attributes></element><element><id>Relation</id><coordinates><x>909</x><y>1260</y><w>108</w><h>108</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;100;60;100;60;10;100;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>1188</y><w>198</w><h>108</h></coordinates><panel_attributes>quotes.gui.quote::ViewQuote
+--
+-textArea JTextArea
+--
++ViewQuote()
++getTextArea(): JTextArea
++showComponent(Quote: q): void
++setQuote(Quote q): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>891</x><y>1206</y><w>108</w><h>423</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;450;100;450;100;10;30;10</additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>1287</y><w>27</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>459</x><y>1179</y><w>162</w><h>117</h></coordinates><panel_attributes>quotes.gui::DisableFrame
+--
+-frame: JFrame
+--
++DisableFrame(JFrame frame)
++componentHidden(): void
++componentMoved(): void
++componentResized(): void
++componentShown(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>468</x><y>1332</y><w>108</w><h>36</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+ComponentListener</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>513</x><y>1287</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>612</x><y>1260</y><w>162</w><h>351</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>160;370;30;370;30;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>135</x><y>1737</y><w>261</w><h>54</h></coordinates><panel_attributes>quotes.gui::JButtonTableCellEditor
+--
++JButtonTableCellEditor(JCkeckBox checkBox)
++getTableCellEditorComponent(): Component</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>711</x><y>1746</y><w>261</w><h>45</h></coordinates><panel_attributes>quotes.gui::JButtonTableCellRenderer
+--
++getTableCellRendererComponent(): Component</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>549</x><y>1755</y><w>117</w><h>36</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+TableCellRenderer</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>432</x><y>1737</y><w>90</w><h>27</h></coordinates><panel_attributes>DefaultCellEditor</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>657</x><y>1764</y><w>72</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>387</x><y>1746</y><w>63</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>50;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>441</x><y>1395</y><w>171</w><h>180</h></coordinates><panel_attributes>quotes.gui::MainWindow
+--
+-vq: ViewQuote
+-db: Database
+-pd: PersonData
+-qd: QuoteData
+-pl: PersonList
+-ql: QuoteList
+-dbc: ConfigureLocalDatabase
+--
++MainWindow()
+-initComponents(): void
+-initMenuBar(): void
+-newRandomQuote(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>432</x><y>1638</y><w>144</w><h>45</h></coordinates><panel_attributes>quotes::App
+--
+_+main(String[] args): void_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>81</x><y>882</y><w>288</w><h>198</h></coordinates><panel_attributes>quotes::PersonData
+--
+-db: Database
+-editEvents: List&lt;EditEvent&gt;
+--
++PersonData(Database db)
++getColumnCount(): int
++getRowCount(): int
++getValueAt(int row, int column): Object
++getColumnName(int column): String
++getColumnClass(int column): Class&lt;?&gt;
++isCellEditable(int row, int column): boolean
++addPerson(Person p): void
++deletePerson(Person p): void
++addEditEvent(EditEvent e): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>459</x><y>882</y><w>288</w><h>252</h></coordinates><panel_attributes>quotes::QuoteData
+--
+-db: Database
+-editEvents: List&lt;ClickEvent&gt;
+-viewEvents: List&lt;ClickEvent&gt;
+--
++QuoteData(Database db)
++getColumnCount(): int
++getRowCount(): int
++getValueAt(int row, int column): Object
++getColumnName(int column): String
++getColumnClass(int column): Class&lt;?&gt;
++isCellEditable(int row, int column): boolean
++addQuote(Quote q): void
++deleteQuote(Quote q): void
++getQuoteByIndex(int idx): Quote
++addEditEvent(ClickEvent e): void
++addViewEvent(ClickEvent e): void
++getAllPeople(): List&lt;Person&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>81</x><y>792</y><w>171</w><h>54</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+quotes.PersonData::EditEvent
+--
++onEdit(Person p): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>144</x><y>837</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=(+)-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>585</x><y>792</y><w>162</w><h>54</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+quotes.QuoteData::ClickEvent
+--
++onClick(Quote q): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>693</x><y>837</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=(+)-</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>531</x><y>720</y><w>27</w><h>180</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>405</x><y>333</y><w>117</w><h>567</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;540;110;540;110;610</additional_attributes></element><element><id>Relation</id><coordinates><x>306</x><y>333</y><w>126</w><h>567</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>120;10;120;540;10;540;10;610</additional_attributes></element><element><id>UMLClass</id><coordinates><x>612</x><y>1638</y><w>90</w><h>27</h></coordinates><panel_attributes>JMenuBar</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>603</x><y>1467</y><w>72</w><h>189</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;10;60;190</additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>1215</y><w>162</w><h>225</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;230;90;230;90;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>522</x><y>1566</y><w>252</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>260;50;10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>603</x><y>1440</y><w>108</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>603</x><y>765</y><w>477</w><h>675</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;730;60;730;60;430;360;430;360;10;510;10</additional_attributes></element><element><id>Text</id><coordinates><x>936</x><y>1674</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>891</x><y>1674</y><w>126</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>891</x><y>1512</y><w>126</w><h>189</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>120;10;60;10;60;190;10;190</additional_attributes></element><element><id>Relation</id><coordinates><x>486</x><y>1566</y><w>27</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>1260</y><w>522</w><h>504</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>560;540;560;490;60;490;60;30;10;30;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>1485</y><w>423</w><h>270</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;280;10;240;450;240;450;10</additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>1152</y><w>189</w><h>45</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>190;30;190;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>585</x><y>1287</y><w>171</w><h>72</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;40;170;40;170;60</additional_attributes></element><element><id>Relation</id><coordinates><x>603</x><y>1251</y><w>135</w><h>162</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;160;80;160;80;10;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>1017</y><w>99</w><h>450</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>90;480;40;480;40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>405</x><y>1017</y><w>72</w><h>477</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;510;10;510;10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>279</x><y>720</y><w>27</w><h>180</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>990</y><w>27</w><h>162</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;160</additional_attributes></element><element><id>Relation</id><coordinates><x>936</x><y>990</y><w>99</w><h>504</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>90;10;90;60;10;60;10;540;70;540</additional_attributes></element><element><id>Relation</id><coordinates><x>918</x><y>1467</y><w>99</w><h>198</h></coordinates><panel_attributes>lt=.</panel_attributes><additional_attributes>30;10;30;40;10;40;10;200;90;200</additional_attributes></element><element><id>Text</id><coordinates><x>972</x><y>1602</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>972</x><y>1422</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>972</x><y>1206</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>522</x><y>1602</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>351</x><y>1602</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>351</x><y>1323</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>315</x><y>1692</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>711</x><y>1692</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>405</x><y>810</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1008</x><y>1035</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>936</x><y>1467</y><w>36</w><h>36</h></coordinates><panel_attributes>customelement=
+drawCircle(10, 10, 5) transparency=0 bg=black
+	</panel_attributes><additional_attributes></additional_attributes></element></diagram>
