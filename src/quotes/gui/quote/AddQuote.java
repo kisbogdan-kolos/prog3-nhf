@@ -28,6 +28,11 @@ public class AddQuote extends JFrame {
     private JTextField quoteText;
     private JTextField contextAfter;
 
+    /**
+     * Creates an {@code AddQuote} object
+     * 
+     * @param qd the {@code QuoteData} object to use
+     */
     public AddQuote(QuoteData qd) {
         super("Idézet hozzáadása");
         this.qd = qd;
@@ -35,6 +40,9 @@ public class AddQuote extends JFrame {
         initComponents();
     }
 
+    /**
+     * Shows the component
+     */
     public void showComponent() {
         personModel.removeAllElements();
         personModel.addAll(qd.getAllPeople());
@@ -47,6 +55,9 @@ public class AddQuote extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Initializes the components
+     */
     private void initComponents() {
         setSize(new Dimension(350, 200));
         setResizable(false);
@@ -83,6 +94,13 @@ public class AddQuote extends JFrame {
         add(panel, BorderLayout.CENTER);
     }
 
+    /**
+     * Generates an input panel
+     * 
+     * @param labelText the label text
+     * @param panel     the panel to add the input panel to
+     * @return the {@code JTextField} object
+     */
     private JTextField generateInputPanel(String text, JPanel addTo) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JLabel label = new JLabel(text);
@@ -95,6 +113,9 @@ public class AddQuote extends JFrame {
         return textField;
     }
 
+    /**
+     * Adds a quote to the database
+     */
     private void addQuote() {
         try {
             Quote q = new Quote((Person) personSelector.getSelectedItem(), contextBefore.getText(), quoteText.getText(),
@@ -107,6 +128,9 @@ public class AddQuote extends JFrame {
         }
     }
 
+    /**
+     * Clears the fields
+     */
     private void clearFields() {
         contextBefore.setText("");
         quoteText.setText("");

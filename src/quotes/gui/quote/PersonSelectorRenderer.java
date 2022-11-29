@@ -8,6 +8,9 @@ import javax.swing.ListCellRenderer;
 
 import quotes.database.Person;
 
+/**
+ * Renders a {@code Person} object in a {@code JComboBox}
+ */
 public class PersonSelectorRenderer extends JLabel implements ListCellRenderer<Person> {
     public PersonSelectorRenderer() {
         setOpaque(true);

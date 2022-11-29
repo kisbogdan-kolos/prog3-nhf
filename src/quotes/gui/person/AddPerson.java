@@ -23,6 +23,11 @@ public class AddPerson extends JFrame {
     private JTextField shortName;
     private JTextField notes;
 
+    /**
+     * Creates an {@code AddPerson} object
+     * 
+     * @param pd the {@code PersonData} object to use
+     */
     public AddPerson(PersonData pd) {
         super("Ember hozzáadása");
         this.pd = pd;
@@ -30,10 +35,16 @@ public class AddPerson extends JFrame {
         initComponents();
     }
 
+    /**
+     * Shows the component
+     */
     public void showComponent() {
         setVisible(true);
     }
 
+    /**
+     * Initializes the components
+     */
     private void initComponents() {
         setSize(new Dimension(350, 200));
         setResizable(false);
@@ -61,6 +72,13 @@ public class AddPerson extends JFrame {
         add(panel, BorderLayout.CENTER);
     }
 
+    /**
+     * Generates an input panel
+     * 
+     * @param labelText the label text
+     * @param panel     the panel to add the input panel to
+     * @return the text field
+     */
     private JTextField generateInputPanel(String text, JPanel addTo) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JLabel label = new JLabel(text);
@@ -73,6 +91,9 @@ public class AddPerson extends JFrame {
         return textField;
     }
 
+    /**
+     * Adds a person
+     */
     private void addPerson() {
         try {
             Person p = new Person(fullName.getText(), shortName.getText(), notes.getText());
@@ -84,6 +105,9 @@ public class AddPerson extends JFrame {
         }
     }
 
+    /**
+     * Clears the fields
+     */
     private void clearFields() {
         fullName.setText("");
         shortName.setText("");

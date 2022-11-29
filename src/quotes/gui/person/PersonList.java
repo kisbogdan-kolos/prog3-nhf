@@ -22,6 +22,11 @@ public class PersonList extends JFrame {
     private AddPerson ap;
     private EditPerson ep;
 
+    /**
+     * Creates a {@code PersonList} object
+     * 
+     * @param pd the {@code PersonData} object to use
+     */
     public PersonList(PersonData pd) {
         super("Emberek listája");
         this.pd = pd;
@@ -37,10 +42,16 @@ public class PersonList extends JFrame {
         initComponents();
     }
 
+    /**
+     * Shows the component
+     */
     public void showComponent() {
         setVisible(true);
     }
 
+    /**
+     * Initializes the components
+     */
     private void initComponents() {
         setMinimumSize(new Dimension(600, 300));
 

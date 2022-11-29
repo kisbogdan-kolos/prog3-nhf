@@ -10,6 +10,9 @@ import quotes.database.Database;
 import quotes.database.Person;
 import quotes.database.Quote;
 
+/**
+ * The model for the {@code Person} table
+ */
 public class QuoteData extends AbstractTableModel {
     private Database db;
 
@@ -32,6 +35,11 @@ public class QuoteData extends AbstractTableModel {
             JButton.class
     };
 
+    /**
+     * Creates a {@code PersonData} object
+     * 
+     * @param db the database
+     */
     public QuoteData(Database db) {
         this.db = db;
 
@@ -116,30 +124,66 @@ public class QuoteData extends AbstractTableModel {
         return column == 4 || column == 5;
     }
 
+    /**
+     * Add a {@code Quote} to the database
+     * 
+     * @param q the {@code Quote} to add
+     */
     public void addQuote(Quote q) {
         db.addQuote(q);
     }
 
+    /**
+     * Remove a {@code Quote} from the database
+     * 
+     * @param q the {@code Quote} to remove
+     */
     public void deleteQuote(Quote q) {
         db.deleteQuoteById(q.getId());
     }
 
+    /**
+     * Get the {@code Quote} at the given index
+     * 
+     * @param idx
+     * @return
+     */
     public Quote getQuoteByIndex(int idx) {
         return db.getQuoteByIndex(idx);
     }
 
     public interface ClickEvent {
+        /**
+         * Called when the button is clicked
+         * 
+         * @param p the relevant {@code Person}
+         */
         public void onClick(Quote p);
     }
 
+    /**
+     * Add an event listener for the edit button
+     * 
+     * @param e the event listener
+     */
     public void addEditEvent(ClickEvent e) {
         editEvents.add(e);
     }
 
+    /**
+     * Add an event listener for the view button
+     * 
+     * @param e the event listener
+     */
     public void addViewEvent(ClickEvent e) {
         viewEvents.add(e);
     }
 
+    /**
+     * Get a list of all {@code Person}s
+     * 
+     * @return a list of all {@code Person}s
+     */
     public List<Person> getAllPeople() {
         int len = db.getPersonCount();
         List<Person> list = new ArrayList<Person>();

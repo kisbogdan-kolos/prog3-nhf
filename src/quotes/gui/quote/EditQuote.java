@@ -29,6 +29,11 @@ public class EditQuote extends JFrame {
     private JTextField quoteText;
     private JTextField contextAfter;
 
+    /**
+     * Creates an {@code EditQuote} object
+     * 
+     * @param qd the {@code QuoteData} object to use
+     */
     public EditQuote(QuoteData qd) {
         super("Idézet hozzáadása");
         this.qd = qd;
@@ -36,6 +41,9 @@ public class EditQuote extends JFrame {
         initComponents();
     }
 
+    /**
+     * Shows the component
+     */
     public void showComponent(Quote q) {
         quote = q;
 
@@ -47,6 +55,9 @@ public class EditQuote extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Initializes the components
+     */
     private void initComponents() {
         setSize(new Dimension(350, 200));
         setResizable(false);
@@ -88,6 +99,13 @@ public class EditQuote extends JFrame {
         add(panel, BorderLayout.CENTER);
     }
 
+    /**
+     * Generates an input panel
+     * 
+     * @param labelText the label text
+     * @param panel     the panel to add the input panel to
+     * @return the text field
+     */
     private JTextField generateInputPanel(String text, JPanel addTo) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JLabel label = new JLabel(text);
@@ -100,6 +118,9 @@ public class EditQuote extends JFrame {
         return textField;
     }
 
+    /**
+     * Saves the quote
+     */
     private void saveQuote() {
         try {
             quote.setAllParams(
@@ -115,9 +136,12 @@ public class EditQuote extends JFrame {
         }
     }
 
+    /**
+     * Deletes the quote
+     */
     private void deleteQuote() {
         String[] options = { "Igen", "Nem" };
-        int result = JOptionPane.showOptionDialog(this, "Bitzosan törlöd: " + quote.getQuote() + "?", "Törlés",
+        int result = JOptionPane.showOptionDialog(this, "Biztosan törlöd: " + quote.getQuote() + "?", "Törlés",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if (result == 0) {
             try {
@@ -130,6 +154,9 @@ public class EditQuote extends JFrame {
         }
     }
 
+    /**
+     * Clears the fields
+     */
     private void clearFields() {
         contextBefore.setText("");
         quoteText.setText("");
@@ -137,6 +164,9 @@ public class EditQuote extends JFrame {
         setVisible(false);
     }
 
+    /**
+     * Loads the fields
+     */
     private void loadFields() {
         if (quote == null)
             return;

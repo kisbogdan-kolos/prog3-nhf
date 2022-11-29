@@ -24,6 +24,11 @@ public class EditPerson extends JFrame {
     private JTextField shortName;
     private JTextField notes;
 
+    /**
+     * Creates an {@code EditPerson} object
+     * 
+     * @param pd the {@code PersonData} object to use
+     */
     public EditPerson(PersonData pd) {
         super("Ember szerkesztése");
 
@@ -32,12 +37,20 @@ public class EditPerson extends JFrame {
         initComponents();
     }
 
+    /**
+     * Shows the component
+     * 
+     * @param person the {@code Person} object to edit
+     */
     public void showComponent(Person p) {
         person = p;
         loadFields();
         setVisible(true);
     }
 
+    /**
+     * Initializes the components
+     */
     private void initComponents() {
         setSize(new Dimension(350, 200));
         setResizable(false);
@@ -69,6 +82,13 @@ public class EditPerson extends JFrame {
         add(panel, BorderLayout.CENTER);
     }
 
+    /**
+     * Generates an input panel
+     * 
+     * @param labelText the label text
+     * @param panel     the panel to add the input panel to
+     * @return the {@code JTextField} object
+     */
     private JTextField generateInputPanel(String text, JPanel addTo) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JLabel label = new JLabel(text);
@@ -81,6 +101,9 @@ public class EditPerson extends JFrame {
         return textField;
     }
 
+    /**
+     * Saves the person
+     */
     private void savePerson() {
         try {
             person.setAllParams(fullName.getText(), shortName.getText(), notes.getText());
@@ -91,9 +114,12 @@ public class EditPerson extends JFrame {
         }
     }
 
+    /**
+     * Deletes the person
+     */
     private void deletePerson() {
         String[] options = { "Igen", "Nem" };
-        int result = JOptionPane.showOptionDialog(this, "Bitzosan törlöd: " + person.getFullName() + "?", "Törlés",
+        int result = JOptionPane.showOptionDialog(this, "Biztosan törlöd: " + person.getFullName() + "?", "Törlés",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if (result == 0) {
             try {
@@ -106,6 +132,9 @@ public class EditPerson extends JFrame {
         }
     }
 
+    /**
+     * Clears the fields
+     */
     private void clearFields() {
         fullName.setText("");
         shortName.setText("");
@@ -113,6 +142,9 @@ public class EditPerson extends JFrame {
         setVisible(false);
     }
 
+    /**
+     * Loads the fields
+     */
     private void loadFields() {
         if (person == null)
             return;

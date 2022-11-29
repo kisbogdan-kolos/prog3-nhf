@@ -24,7 +24,7 @@ public class ConfigureLocalDatabase extends JFrame implements LocalDatabaseConfi
     private String path;
 
     public ConfigureLocalDatabase() {
-        super("Helyi adatábzis beállítása");
+        super("Helyi adatbázis beállítása");
         setSize(new Dimension(350, 100));
 
         filename = "";

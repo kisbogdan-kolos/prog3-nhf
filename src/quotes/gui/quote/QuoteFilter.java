@@ -27,6 +27,12 @@ public class QuoteFilter extends JPanel {
     private JComboBox<Person> personSelector;
     private JTextField filterTextSelector;
 
+    /**
+     * Creates a {@code QuoteFilter} object
+     * 
+     * @param qd    the {@code QuoteData} object to use
+     * @param table the {@code JTable} object to use
+     */
     public QuoteFilter(QuoteData qd, JTable table) {
         super(new FlowLayout(FlowLayout.LEFT));
         this.qd = qd;
@@ -37,12 +43,18 @@ public class QuoteFilter extends JPanel {
         initComponents();
     }
 
+    /**
+     * Updates the list of people
+     */
     public void updateList() {
         personModel.removeAllElements();
         personModel.addElement(allPerson);
         personModel.addAll(qd.getAllPeople());
     }
 
+    /**
+     * Initializes the components
+     */
     private void initComponents() {
         personModel = new DefaultComboBoxModel<Person>();
         allPerson = new Person("MINDEN", " ", "");
@@ -60,6 +72,9 @@ public class QuoteFilter extends JPanel {
         add(filterTextSelector);
     }
 
+    /**
+     * Creates and applies the filter
+     */
     private void applyFilter() {
         final Person filterPerson = (Person) personSelector.getSelectedItem();
         final String filterText = filterTextSelector.getText().toUpperCase();

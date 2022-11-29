@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
 
+/**
+ * Render a {@code JButton} object in a {@code JTable}
+ */
 public class JButtonTableCellEditor extends DefaultCellEditor {
     public JButtonTableCellEditor(JCheckBox checkBox) {
         super(checkBox);

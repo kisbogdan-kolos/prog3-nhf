@@ -5,6 +5,11 @@ import java.awt.event.ComponentListener;
 
 import javax.swing.JFrame;
 
+/**
+ * Attached to a {@code JFrame} object, when the frame is visible, the
+ * {@code JFrame} given in the constructor is disabled
+ * and cannot be used until the frame is closed
+ */
 public class DisableFrame implements ComponentListener {
     private JFrame frame;
 
