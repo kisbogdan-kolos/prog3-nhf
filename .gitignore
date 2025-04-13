@@ -1,5 +1,4 @@
-bin/*
-*.jar
+target
 spellright.dict
 db*.json
 *.pdf

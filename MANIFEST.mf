@@ -1,2 +1,0 @@
-Main-Class: quotes.App
-Class-Path: lib/json.jar
