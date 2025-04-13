@@ -1,7 +1,5 @@
 {
-	"java.project.sourcePaths": ["src", "test"],
-	"java.project.outputPath": "bin",
-	"java.project.referencedLibraries": ["lib/**/*.jar"],
-	"spellright.language": ["English", "Hungarian"],
-	"spellright.documentTypes": ["markdown", "latex", "java"]
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "spellright.language": ["English", "Hungarian"],
+    "spellright.documentTypes": ["markdown", "latex", "java"]
 }
