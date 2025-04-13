@@ -3,3 +3,4 @@ bin/*
 spellright.dict
 db*.json
 *.pdf
+connection_details.json

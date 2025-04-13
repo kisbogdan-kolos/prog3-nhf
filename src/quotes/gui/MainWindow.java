@@ -12,8 +12,10 @@ import javax.swing.JMenuItem;
 import quotes.PersonData;
 import quotes.QuoteData;
 import quotes.database.Database;
-import quotes.database.LocalDatabase;
-import quotes.gui.database.ConfigureLocalDatabase;
+// import quotes.database.LocalDatabase;
+import quotes.database.RemoteDatabase;
+// import quotes.gui.database.ConfigureLocalDatabase;
+import quotes.gui.database.ConfigureRemoteDatabase;
 import quotes.gui.person.PersonList;
 import quotes.gui.quote.QuoteList;
 import quotes.gui.quote.ViewQuote;
@@ -25,7 +27,8 @@ public class MainWindow extends JFrame {
     private QuoteData qd;
     private PersonList pl;
     private QuoteList ql;
-    private ConfigureLocalDatabase dbc;
+    // private ConfigureLocalDatabase dbc;
+    private ConfigureRemoteDatabase dbc;
 
     /**
      * Creates a {@code MainWindow} object
@@ -42,8 +45,10 @@ public class MainWindow extends JFrame {
     private void initComponents() {
         initMenuBar();
 
-        dbc = new ConfigureLocalDatabase();
-        db = new LocalDatabase(dbc);
+        // dbc = new ConfigureLocalDatabase();
+        // db = new LocalDatabase(dbc);
+        dbc = new ConfigureRemoteDatabase();
+        db = new RemoteDatabase(dbc);
 
         Database.UpdateEvent updateRandomQuote = idx -> newRandomQuote();
         db.onAllPersonUpdate(updateRandomQuote);
