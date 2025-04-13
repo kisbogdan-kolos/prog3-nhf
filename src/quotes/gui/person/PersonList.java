@@ -54,6 +54,9 @@ public class PersonList extends JFrame {
      */
     private void initComponents() {
         setMinimumSize(new Dimension(600, 300));
+        setSize(new Dimension(1200, 600));
+
+        setLocationRelativeTo(null);
 
         JTable table = new JTable();
         table.setFillsViewportHeight(true);

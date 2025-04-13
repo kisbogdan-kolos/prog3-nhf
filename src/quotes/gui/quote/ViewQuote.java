@@ -22,6 +22,8 @@ public class ViewQuote extends JFrame {
         super("Idézet nézet");
         setSize(new Dimension(400, 200));
 
+        setLocationRelativeTo(null);
+
         textArea = new JTextArea();
         textArea.setWrapStyleWord(true);
         textArea.setLineWrap(true);

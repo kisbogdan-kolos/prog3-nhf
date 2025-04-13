@@ -49,6 +49,8 @@ public class AddPerson extends JFrame {
         setSize(new Dimension(350, 200));
         setResizable(false);
 
+        setLocationRelativeTo(null);
+
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(new EmptyBorder(10, 10, 10, 10));

@@ -73,6 +73,8 @@ public class MainWindow extends JFrame {
 
         setMinimumSize(new Dimension(500, 200));
 
+        setLocationRelativeTo(null);
+
         db.init();
     }
 

@@ -178,4 +178,12 @@ public class Person {
     void setDataChanged(UpdateEvent dataChanged) {
         this.dataChanged.add(dataChanged);
     }
+
+    /**
+     * Convert {@code Person} to string
+     */
+    @Override
+    public String toString() {
+        return "Person(" + id + ", " + fullName + ", " + shortName + ", " + notes + ")";
+    }
 }

@@ -185,4 +185,12 @@ public class Quote {
         this.dataChanged.add(dataChanged);
     }
 
+    /**
+     * Convert {@code Quote} to string
+     */
+    @Override
+    public String toString() {
+        return "Quote(" + id + ", " + author + ", " + contextBefore + ", " + quote + ", "
+                + contextAfter + ")";
+    }
 }

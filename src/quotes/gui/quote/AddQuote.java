@@ -59,8 +59,10 @@ public class AddQuote extends JFrame {
      * Initializes the components
      */
     private void initComponents() {
-        setSize(new Dimension(350, 200));
+        setSize(new Dimension(350, 220));
         setResizable(false);
+
+        setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
